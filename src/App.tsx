@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
@@ -33,3 +34,14 @@ function App() {
 }
 
 export default App
+=======
+export default function App() {
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-blue-100">
+      <h1 className="text-3xl font-bold text-blue-800">
+        Tailwind funcionando 🎉
+      </h1>
+    </div>
+  );
+}
+>>>>>>> 0eba579 (inicializa proyecto frontend - login)
