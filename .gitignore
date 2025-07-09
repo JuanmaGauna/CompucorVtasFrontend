@@ -1,0 +1,34 @@
+# === Node.js ===
+node_modules/
+package-lock.json
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# === Build output ===
+dist/
+.vite/
+
+# === Environment files ===
+.env
+.env.*.local
+
+# === macOS ===
+.DS_Store
+
+# === VSCode ===
+.vscode/
+
+# === JetBrains IDEs ===
+.idea/
+
+# === Logs ===
+*.log
+
+# === Others ===
+*.local
+*.sublime-workspace
+*.sublime-project
+
+# === Coverage / Testing ===
+coverage/
