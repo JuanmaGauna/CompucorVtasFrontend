@@ -11,10 +11,10 @@ export default function Dashboard() {
   const [section, setSection] = useState("inicio");
   const [showLogoutModal, setShowLogoutModal] = useState(false);
 
-  // Detecta el path actual y ajusta el estado del menú activo
+  // Detectar sección activa según la URL
   useEffect(() => {
-    const path = location.pathname.split("/").pop();
-    setSection(path || "inicio");
+    const current = location.pathname.split("/").pop();
+    setSection(current || "inicio");
   }, [location]);
 
   const handleLogoutConfirm = () => {
@@ -28,26 +28,24 @@ export default function Dashboard() {
       <nav className="w-64 bg-gray-800 text-white p-4">
         <h2 className="text-xl font-bold mb-6">AdminVentas</h2>
         <ul>
-            <li className={`mb-4 cursor-pointer px-2 py-1 rounded ${
-            section === "inicio" ? "bg-blue-700 font-bold" : "hover:bg-gray-700"
-                                                                                    }`}>
-                    <Link to="/dashboard/inicio">Inicio</Link>
-                    </li>
-                    <li className={`mb-4 cursor-pointer px-2 py-1 rounded ${
-            section === "productos" ? "bg-blue-700 font-bold" : "hover:bg-gray-700"
-                                                                                    }`}>
-                    <Link to="/dashboard/productos">Productos</Link>
-                    </li>
-                    <li className={`mb-4 cursor-pointer px-2 py-1 rounded ${
-            section === "clientes" ? "bg-blue-700 font-bold" : "hover:bg-gray-700"
-                                                                                    }`}>
-                    <Link to="/dashboard/clientes">Clientes</Link>
-                    </li>
-                    <li className={`mb-4 cursor-pointer px-2 py-1 rounded ${
-            section === "ventas" ? "bg-blue-700 font-bold" : "hover:bg-gray-700"
-                                                                                    }`}>
-                    <Link to="/dashboard/ventas">Ventas</Link>
-                    </li>
+          <li className={`mb-4 cursor-pointer px-2 py-1 rounded ${section === "inicio" ? "bg-blue-700 font-bold" : "hover:bg-gray-700"}`}>
+            <Link to="/dashboard/inicio">Inicio</Link>
+          </li>
+          <li className={`mb-4 cursor-pointer px-2 py-1 rounded ${section === "productos" ? "bg-blue-700 font-bold" : "hover:bg-gray-700"}`}>
+            <Link to="/dashboard/productos">Productos</Link>
+          </li>
+          <li className={`mb-4 cursor-pointer px-2 py-1 rounded ${section === "clientes" ? "bg-blue-700 font-bold" : "hover:bg-gray-700"}`}>
+            <Link to="/dashboard/clientes">Clientes</Link>
+          </li>
+          <li className={`mb-4 cursor-pointer px-2 py-1 rounded ${section === "ventas" ? "bg-blue-700 font-bold" : "hover:bg-gray-700"}`}>
+            <Link to="/dashboard/ventas">Ventas</Link>
+          </li>
+          <li
+            className="cursor-pointer mt-10 text-red-500 hover:text-red-700"
+            onClick={() => setShowLogoutModal(true)}
+          >
+            Logout
+          </li>
         </ul>
       </nav>
 
