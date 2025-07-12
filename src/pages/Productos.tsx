@@ -19,9 +19,11 @@ export default function Productos() {
   useEffect(() => {
     api.get("/productos")
       .then((res) => {
-        setProductos(res.data as Producto[]);
-        setLoading(false);
-      })
+      console.log("Productos recibidos:", res.data); // 👈 esto
+      setProductos(res.data as Producto[]);
+      setLoading(false);
+    })
+    
       .catch((err) => {
         console.error("Error al cargar productos", err);
         setError("No se pudieron cargar los productos.");
@@ -32,7 +34,7 @@ export default function Productos() {
   const columns = [
     { header: "ID", accessor: "id" as keyof Producto },
     { header: "Nombre", accessor: "nombre" as keyof Producto },
-    { header: "Precio", accessor: "precio" as keyof Producto },
+    { header: "Precio", accessor: "precio" as keyof Producto, render: (p: Producto) => `$${p.precio.toLocaleString("es-AR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}` },
     { header: "Stock", accessor: "stock" as keyof Producto },
   ];
 

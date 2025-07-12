@@ -1,7 +1,7 @@
-// src/components/DataTable.tsx
 type Column<T> = {
     header: string;
     accessor: keyof T;
+    render?: (item: T) => React.ReactNode;
   };
   
   type Props<T> = {
@@ -15,7 +15,9 @@ type Column<T> = {
         <thead className="bg-gray-100">
           <tr>
             {columns.map((col) => (
-              <th key={String(col.accessor)} className="p-2 border">{col.header}</th>
+              <th key={String(col.accessor)} className="p-2 border">
+                {col.header}
+              </th>
             ))}
           </tr>
         </thead>
@@ -24,7 +26,7 @@ type Column<T> = {
             <tr key={idx} className="even:bg-gray-50">
               {columns.map((col) => (
                 <td key={String(col.accessor)} className="p-2 border">
-                  {String(row[col.accessor])}
+                  {col.render ? col.render(row) : String(row[col.accessor])}
                 </td>
               ))}
             </tr>
